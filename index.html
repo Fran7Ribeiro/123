@@ -4,92 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Rose with Poem</title>
-    <style>
-        #rose {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at 50% 50%, #80b3ff, #0066cc);
-            border-radius: 50%;
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .petal {
-            width: 20px;
-            height: 70px;
-            position: absolute;
-            top: 10px;
-            left: 90px;
-            background: #3333cc;
-            border-radius: 50% 50% 0 0;
-            transform-origin: bottom center;
-        }
-
-        .petal:nth-child(odd) {
-            transform: rotate(30deg);
-        }
-
-        .petal:nth-child(even) {
-            transform: rotate(-30deg);
-        }
-
-        .leaf {
-            width: 0;
-            height: 0;
-            border-top: 30px solid darkgreen;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            position: absolute;
-            top: 130px;
-            left: 95px;
-            transform: rotate(-45deg);
-        }
-
-        .leaf::before {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 20px solid darkgreen;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            top: -15px;
-            left: -8px;
-        }
-
-        .leaf::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 20px solid darkgreen;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            top: -15px;
-            right: -8px;
-        }
-
-        #poem-container {
-            text-align: center;
-            font-style: italic;
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
-<div id="rose">
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="leaf"></div>
-</div>
+<img src="rosa.png" alt="Blue Rose" style="display: block; margin: 0 auto; width: 300px; height: auto;">
 
-<div id="poem-container">
+<div id="poem-container" style="text-align: center; margin-top: 20px; font-style: italic; font-size: 1.2em;">
     <p>És a rosa azul em meu jardim encantado,<br>
     Beleza única em um mundo tão iluminado,<br>
     Tua graça emana como a luz do luar,<br>
