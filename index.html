@@ -3,81 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Script with Poem</title>
+    <title>Blue Rose with Poem</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #poem-container {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Python Script with Poem</h1>
+<canvas id="roseCanvas" width="400" height="400"></canvas>
 
-<!-- Displaying the Python script -->
-<code>
-import turtle
+<div id="poem-container">
+    <p>És a rosa azul em meu jardim encantado,<br>
+    Beleza única em um mundo tão iluminado,<br>
+    Tua graça emana como a luz do luar,<br>
+    Na paisagem do meu coração, és a mais bela a brilhar.</p>
+</div>
 
-# Uma flor linda para uma pessoa linda
+<script>
+    // Get the canvas element and its context
+    var canvas = document.getElementById('roseCanvas');
+    var ctx = canvas.getContext('2d');
 
-# Set up the turtle
-t = turtle.Turtle()
-t.speed(10)  # Set the drawing speed
+    // Function to draw a petal
+    function drawPetal(x, y, radius, startAngle, endAngle) {
+        ctx.fillStyle = 'navy'; // Set the color to a darker shade of blue
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.arc(x, y, radius, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fill();
+    }
 
-# Function to draw a petal
-def draw_petal():
-    t.color("navy")  # Set the color to a darker shade of blue
-    t.begin_fill()   # Begin filling the shape
-    t.circle(50, 60) # Draw a part of a circle to form a petal
-    t.left(120)      # Turn left
-    t.circle(50, 60) # Draw another part of a circle to complete the petal
-    t.end_fill()     # End filling the shape
+    // Function to draw a leaf
+    function drawLeaf(x, y, width, height) {
+        ctx.fillStyle = 'darkgreen'; // Set the color to dark green
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x - width / 2, y - height / 2);
+        ctx.lineTo(x - width / 2, y + height / 2);
+        ctx.closePath();
+        ctx.fill();
+    }
 
-# Function to draw a leaf
-def draw_leaf():
-    t.color("dark green")  # Set the color to dark green
-    t.begin_fill()         # Begin filling the shape
-    t.right(90)            # Turn right
-    t.forward(50)          # Move forward
-    t.left(120)            # Turn left
-    t.forward(50)          # Move forward
-    t.end_fill()           # End filling the shape
+    // Function to draw the rose
+    function drawRose() {
+        for (var i = 0; i < 6; i++) {
+            drawPetal(canvas.width / 2, canvas.height / 2, 80, Math.PI / 3 * i, Math.PI / 3 * (i + 1));
+        }
 
-# Function to draw the rose
-def draw_rose():
-    for _ in range(6):
-        draw_petal()    # Draw a petal
-        t.left(60)      # Turn left to draw the next petal
+        // Draw the center of the rose
+        ctx.fillStyle = 'yellow'; // Set the color to yellow for the center
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
 
-    # Draw the center of the rose
-    t.penup()
-    t.goto(0, 0)
-    t.pendown()
-    t.color("yellow")  # Set the color to yellow for the center
-    t.dot(20)          # Draw a smaller yellow dot as the center of the rose
+        // Draw the leaves
+        drawLeaf(canvas.width / 2, canvas.height / 2 - 10, 20, 40);
+        drawLeaf(canvas.width / 2 - 40, canvas.height / 2 + 20, 40, 20);
+        drawLeaf(canvas.width / 2 + 40, canvas.height / 2 + 20, 40, 20);
+    }
 
-    # Draw the leaves
-    t.penup()
-    t.goto(0, -10)     # Position the turtle for drawing leaves
-    t.pendown()
-    t.right(30)        # Turn the turtle right for better leaf orientation
-    draw_leaf()        # Draw the first leaf
-    t.left(120)        # Turn left
-    draw_leaf()        # Draw the second leaf
-    t.left(120)        # Turn left
-    draw_leaf()        # Draw the third leaf
-
-# Move the turtle to a good starting position
-t.penup()
-t.goto(0, -150)
-t.pendown()
-
-# Draw the rose
-draw_rose()
-</code>
-
-<!-- Displaying the poem -->
-<p style="font-style: italic; font-size: 1.2em; margin-top: 20px;">
-És a rosa azul em meu jardim encantado,<br>
-Beleza única em um mundo tão iluminado.<br>
-Tua graça emana como a luz do luar,<br>
-Na paisagem do meu coração, és a mais bela a brilhar.
-</p>
+    // Call the drawRose function to draw the rose
+    drawRose();
+</script>
 
 </body>
 </html>
