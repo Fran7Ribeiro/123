@@ -1,34 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./style/css/styles.css">
-        
-    </head> 
-    <body>
-        <div class="container">
-            <div >
-                <h1 class = "header_text">Aceitas um date comigo? eheh</h1>
-            </div>
-            <div class="gif_container">
-                <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated illustration">
-            </div>
-            <div class = "buttons">
-                <button class="btn" id = "yesButton" onclick="nextPage()">Sim</button>
-                <button class="btn" id="noButton" onmouseover="moveButton()">Não</button>
-                <script>
-                    function nextPage() {
-                        window.location.href = "yes.html";
-                    }
-                    
-                    function moveButton() {
-                        var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth);
-                        var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight);
-                        document.getElementById('noButton').style.left = `${x}px`;
-                        document.getElementById('noButton').style.top = `${y}px`;
-                    }
-                </script> 
-            </div>
-        </div>
-       
-    </body> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Script with Poem</title>
+</head>
+<body>
+
+<h1>Python Script with Poem</h1>
+
+<!-- Displaying the Python script -->
+<pre>
+import turtle
+
+# Uma flor linda para uma pessoa linda
+
+# Set up the turtle
+t = turtle.Turtle()
+t.speed(10)  # Set the drawing speed
+
+# Function to draw a petal
+def draw_petal():
+    t.color("navy")  # Set the color to a darker shade of blue
+    t.begin_fill()   # Begin filling the shape
+    t.circle(50, 60) # Draw a part of a circle to form a petal
+    t.left(120)      # Turn left
+    t.circle(50, 60) # Draw another part of a circle to complete the petal
+    t.end_fill()     # End filling the shape
+
+# Function to draw a leaf
+def draw_leaf():
+    t.color("dark green")  # Set the color to dark green
+    t.begin_fill()         # Begin filling the shape
+    t.right(90)            # Turn right
+    t.forward(50)          # Move forward
+    t.left(120)            # Turn left
+    t.forward(50)          # Move forward
+    t.end_fill()           # End filling the shape
+
+# Function to draw the rose
+def draw_rose():
+    for _ in range(6):
+        draw_petal()    # Draw a petal
+        t.left(60)      # Turn left to draw the next petal
+
+    # Draw the center of the rose
+    t.penup()
+    t.goto(0, 0)
+    t.pendown()
+    t.color("yellow")  # Set the color to yellow for the center
+    t.dot(20)          # Draw a smaller yellow dot as the center of the rose
+
+    # Draw the leaves
+    t.penup()
+    t.goto(0, -10)     # Position the turtle for drawing leaves
+    t.pendown()
+    t.right(30)        # Turn the turtle right for better leaf orientation
+    draw_leaf()        # Draw the first leaf
+    t.left(120)        # Turn left
+    draw_leaf()        # Draw the second leaf
+    t.left(120)        # Turn left
+    draw_leaf()        # Draw the third leaf
+
+# Move the turtle to a good starting position
+t.penup()
+t.goto(0, -150)
+t.pendown()
+
+# Draw the rose
+draw_rose()
+
+# Insert the poem as a comment
+<!--
+És a rosa azul em meu jardim encantado,
+Beleza única em um mundo tão iluminado.
+Tua graça emana como a luz do luar,
+Na paisagem do meu coração, és a mais bela a brilhar.
+-->
+
+# Hide the turtle
+t.hideturtle()
+
+# Keep the window open
+turtle.done()
+</pre>
+
+</body>
 </html>
