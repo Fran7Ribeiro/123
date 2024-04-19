@@ -5,23 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Rose with Poem</title>
     <style>
-        canvas {
-            border: 2px solid black;
-            display: block;
-            margin: 0 auto;
+        #rose {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 50% 50%, #80b3ff, #0066cc);
+            border-radius: 50%;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .petal {
+            width: 20px;
+            height: 70px;
+            position: absolute;
+            top: 10px;
+            left: 90px;
+            background: #3333cc;
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+        }
+
+        .petal:nth-child(odd) {
+            transform: rotate(30deg);
+        }
+
+        .petal:nth-child(even) {
+            transform: rotate(-30deg);
+        }
+
+        .leaf {
+            width: 0;
+            height: 0;
+            border-top: 30px solid darkgreen;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            position: absolute;
+            top: 130px;
+            left: 95px;
+            transform: rotate(-45deg);
+        }
+
+        .leaf::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 20px solid darkgreen;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            top: -15px;
+            left: -8px;
+        }
+
+        .leaf::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 20px solid darkgreen;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            top: -15px;
+            right: -8px;
         }
 
         #poem-container {
             text-align: center;
-            margin-top: 20px;
             font-style: italic;
             font-size: 1.2em;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<canvas id="roseCanvas" width="400" height="400"></canvas>
+<div id="rose">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="leaf"></div>
+</div>
 
 <div id="poem-container">
     <p>És a rosa azul em meu jardim encantado,<br>
@@ -29,55 +95,6 @@
     Tua graça emana como a luz do luar,<br>
     Na paisagem do meu coração, és a mais bela a brilhar.</p>
 </div>
-
-<script>
-    // Get the canvas element and its context
-    var canvas = document.getElementById('roseCanvas');
-    var ctx = canvas.getContext('2d');
-
-    // Function to draw a petal
-    function drawPetal(x, y, radius, startAngle, endAngle) {
-        ctx.fillStyle = 'navy'; // Set the color to a darker shade of blue
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.arc(x, y, radius, startAngle, endAngle);
-        ctx.closePath();
-        ctx.fill();
-    }
-
-    // Function to draw a leaf
-    function drawLeaf(x, y, width, height) {
-        ctx.fillStyle = 'darkgreen'; // Set the color to dark green
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x - width / 2, y - height / 2);
-        ctx.lineTo(x - width / 2, y + height / 2);
-        ctx.closePath();
-        ctx.fill();
-    }
-
-    // Function to draw the rose
-    function drawRose() {
-        for (var i = 0; i < 6; i++) {
-            drawPetal(canvas.width / 2, canvas.height / 2, 80, Math.PI / 3 * i, Math.PI / 3 * (i + 1));
-        }
-
-        // Draw the center of the rose
-        ctx.fillStyle = 'yellow'; // Set the color to yellow for the center
-        ctx.beginPath();
-        ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, 2 * Math.PI);
-        ctx.closePath();
-        ctx.fill();
-
-        // Draw the leaves
-        drawLeaf(canvas.width / 2, canvas.height / 2 - 10, 20, 40);
-        drawLeaf(canvas.width / 2 - 40, canvas.height / 2 + 20, 40, 20);
-        drawLeaf(canvas.width / 2 + 40, canvas.height / 2 + 20, 40, 20);
-    }
-
-    // Call the drawRose function to draw the rose
-    drawRose();
-</script>
 
 </body>
 </html>
